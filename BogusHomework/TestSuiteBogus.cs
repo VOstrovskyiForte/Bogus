@@ -51,7 +51,6 @@ namespace BogusHomework
         [Test]
         public void TestRegisterLogin()
         {
-            int a = 3;
             driver.Navigate().GoToUrl("https://homeworkdecoration20181213051012.azurewebsites.net/");
             driver.FindElement(registerButtonHeader).Click();
 
