@@ -9,8 +9,8 @@
     <ProjectGuid>{BDC6AD3D-B9A3-4BDF-B278-9840FB34AF67}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>pr2</RootNamespace>
-    <AssemblyName>pr2</AssemblyName>
+    <RootNamespace>BogusHomework</RootNamespace>
+    <AssemblyName>BogusHomework</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
