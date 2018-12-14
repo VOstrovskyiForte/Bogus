@@ -55,52 +55,66 @@ namespace BogusHomework
             driver.FindElement(registerButtonHeader).Click();
 
             //Create user and fill the fields
-            var user1 = new User();
-            user1.GetRandomDetails();
-            driver.FindElement(emailField).SendKeys(user1.email);
-            driver.FindElement(nameField).SendKeys(user1.name);
-            driver.FindElement(surnameField).SendKeys(user1.surname);
-            driver.FindElement(companyField).SendKeys(user1.company);
-            driver.FindElement(passwordField).SendKeys(user1.password);
-            driver.FindElement(confirmPasswordField).SendKeys(user1.password);
+            var user = User.GenerateUser();            
+
+            driver.FindElement(emailField).SendKeys(user.email);
+            driver.FindElement(nameField).SendKeys(user.name);
+            driver.FindElement(surnameField).SendKeys(user.surname);
+            driver.FindElement(companyField).SendKeys(user.company);
+            driver.FindElement(passwordField).SendKeys(user.password);
+            driver.FindElement(confirmPasswordField).SendKeys(user.password);
             driver.FindElement(registerButton).Click();
+
+            var expectedUser = new User()
+            {
+                name = user.name,
+                surname = user.surname,
+                company = user.company,
+                email = user.email
+            };
 
             //Check if the Hello button text is valid
             var helloButtonElement = driver.FindElement(helloButton);
-            helloButtonElement.Text.Should().Be("Hello " + user1.email + "!");
+            helloButtonElement.Text.Should().Contain(user.email);
 
             //Save id given after registration
             helloButtonElement.Click();
-            string idAfterRegistration = driver.FindElement(idLabel).Text;
+
+            var actualUser = new User()
+            {
+                name = driver.FindElement(nameLabel).Text,
+                surname = driver.FindElement(surnameLabel).Text,
+                company = driver.FindElement(companyLabel).Text,
+                email = driver.FindElement(emailLabel).Text
+            };
 
             //Check that data is the same as we entered during registration process
-            driver.FindElement(nameLabel).Text.Should().Be(user1.name);
-            driver.FindElement(surnameLabel).Text.Should().Be(user1.surname);
-            driver.FindElement(companyLabel).Text.Should().Be(user1.company);
-            driver.FindElement(emailLabel).Text.Should().Be(user1.email);
+            actualUser.Should().BeEquivalentTo(expectedUser);         
 
             //Logout and login
             driver.FindElement(logOffButtonHeader).Click();
 
             driver.FindElement(loginButtonHeader).Click();
-            driver.FindElement(emailField).SendKeys(user1.email);
-            driver.FindElement(passwordField).SendKeys(user1.password);
+            driver.FindElement(emailField).SendKeys(user.email);
+            driver.FindElement(passwordField).SendKeys(user.password);
             driver.FindElement(loginButton).Click();
 
             //Check that the Hello button text is valid after login
             helloButtonElement = driver.FindElement(helloButton);
-            helloButtonElement.Text.Should().Be("Hello " + user1.email + "!");
+            helloButtonElement.Text.Should().Contain(user.email);
 
             helloButtonElement.Click();
 
-            //Check that id is the same as after registration
-            driver.FindElement(idLabel).Text.Should().Be(idAfterRegistration);
+            actualUser = new User()
+            {
+                name = driver.FindElement(nameLabel).Text,
+                surname = driver.FindElement(surnameLabel).Text,
+                company = driver.FindElement(companyLabel).Text,
+                email = driver.FindElement(emailLabel).Text
+            };
 
             //Check that the same user data are displayed on page
-            driver.FindElement(nameLabel).Text.Should().Be(user1.name);
-            driver.FindElement(surnameLabel).Text.Should().Be(user1.surname);
-            driver.FindElement(companyLabel).Text.Should().Be(user1.company);
-            driver.FindElement(emailLabel).Text.Should().Be(user1.email);
+            actualUser.Should().BeEquivalentTo(expectedUser);
 
         }
 

@@ -42,7 +42,6 @@ C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\bin\Debu
 C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\bin\Debug\nunit.framework.xml
 C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\bin\Debug\System.ValueTuple.xml
 C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\bin\Debug\WebDriver.xml
-C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\obj\Debug\BogusHomework.csprojAssemblyReference.cache
 C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\obj\Debug\BogusHomework.csproj.CoreCompileInputs.cache
 C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\obj\Debug\BogusHomework.csproj.CopyComplete
 C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\obj\Debug\BogusHomework.dll
