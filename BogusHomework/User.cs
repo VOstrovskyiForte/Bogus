@@ -29,7 +29,6 @@ namespace BogusHomework
                 .RuleFor(o => o.password, f => f.Internet.Password().MakePasswordValid())
                 .Generate();
 
-            //return this;
         }
 
     }

@@ -46,3 +46,4 @@ C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\obj\Debu
 C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\obj\Debug\BogusHomework.csproj.CopyComplete
 C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\obj\Debug\BogusHomework.dll
 C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\obj\Debug\BogusHomework.pdb
+C:\FORTE\Selenium\practice\other\fluentassertionshomework\BogusHomework\obj\Debug\BogusHomework.csprojAssemblyReference.cache

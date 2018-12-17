@@ -55,27 +55,19 @@ namespace BogusHomework
             driver.FindElement(registerButtonHeader).Click();
 
             //Create user and fill the fields
-            var user = User.GenerateUser();            
+            var expectedUser = User.GenerateUser();            
 
-            driver.FindElement(emailField).SendKeys(user.email);
-            driver.FindElement(nameField).SendKeys(user.name);
-            driver.FindElement(surnameField).SendKeys(user.surname);
-            driver.FindElement(companyField).SendKeys(user.company);
-            driver.FindElement(passwordField).SendKeys(user.password);
-            driver.FindElement(confirmPasswordField).SendKeys(user.password);
+            driver.FindElement(emailField).SendKeys(expectedUser.email);
+            driver.FindElement(nameField).SendKeys(expectedUser.name);
+            driver.FindElement(surnameField).SendKeys(expectedUser.surname);
+            driver.FindElement(companyField).SendKeys(expectedUser.company);
+            driver.FindElement(passwordField).SendKeys(expectedUser.password);
+            driver.FindElement(confirmPasswordField).SendKeys(expectedUser.password);
             driver.FindElement(registerButton).Click();
-
-            var expectedUser = new User()
-            {
-                name = user.name,
-                surname = user.surname,
-                company = user.company,
-                email = user.email
-            };
 
             //Check if the Hello button text is valid
             var helloButtonElement = driver.FindElement(helloButton);
-            helloButtonElement.Text.Should().Contain(user.email);
+            helloButtonElement.Text.Should().Contain(expectedUser.email);
 
             //Save id given after registration
             helloButtonElement.Click();
@@ -89,19 +81,19 @@ namespace BogusHomework
             };
 
             //Check that data is the same as we entered during registration process
-            actualUser.Should().BeEquivalentTo(expectedUser);         
+            actualUser.Should().BeEquivalentTo(expectedUser, options => options.Excluding(u => u.password).Excluding(u => u.id));
 
             //Logout and login
             driver.FindElement(logOffButtonHeader).Click();
 
             driver.FindElement(loginButtonHeader).Click();
-            driver.FindElement(emailField).SendKeys(user.email);
-            driver.FindElement(passwordField).SendKeys(user.password);
+            driver.FindElement(emailField).SendKeys(expectedUser.email);
+            driver.FindElement(passwordField).SendKeys(expectedUser.password);
             driver.FindElement(loginButton).Click();
 
             //Check that the Hello button text is valid after login
             helloButtonElement = driver.FindElement(helloButton);
-            helloButtonElement.Text.Should().Contain(user.email);
+            helloButtonElement.Text.Should().Contain(expectedUser.email);
 
             helloButtonElement.Click();
 
@@ -114,7 +106,7 @@ namespace BogusHomework
             };
 
             //Check that the same user data are displayed on page
-            actualUser.Should().BeEquivalentTo(expectedUser);
+            actualUser.Should().BeEquivalentTo(expectedUser, options => options.Excluding(u => u.password).Excluding(u => u.id));
 
         }
 
